@@ -6,7 +6,7 @@ import numpy as np
 basicImgsPath = "./data/masks_full/"
 selectImgsPath = os.path.join(basicImgsPath)
 imgFileList = os.listdir(selectImgsPath)
-imgFileListJpgWext= [file for file in imgFileList if file.endswith(".png")]
+imgFileListJpgWext= [file for file in imgFileList if file.endswith(".jpg")]
 imgFileListJpgWextSorted = sorted(imgFileListJpgWext)
 
 # target image path
@@ -25,8 +25,15 @@ while True:
       g = imgSrc.item(i, j, 1)
       r = imgSrc.item(i, j, 2)
       
-      if b == 0 and g == 80 and r == 0:
-        imgDst.itemset(i, j, 255)
+      if b <= 10 and r <= 10:
+        if g >= 70:
+          imgDst.itemset(i, j, 2)
+          # imgDst.itemset((i, j, 0), 1)
+        else:
+          imgDst.itemset(i, j, 1)
+      else:
+        imgDst.itemset(i, j, 1)
+            
 
   fileInfo = os.path.splitext(imgFileListJpgWextSorted[nCount])
   fileDstPath = selectDstsPath + fileInfo[0] + ".jpg"

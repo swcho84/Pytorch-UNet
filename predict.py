@@ -16,7 +16,7 @@ def predict_img(net,
                 full_img,
                 device,
                 scale_factor=1,
-                out_threshold=0.5):
+                out_threshold=0.25):
     net.eval()
     img = torch.from_numpy(BasicDataset.preprocess(full_img, scale_factor, is_mask=False))
     img = img.unsqueeze(0)
@@ -81,7 +81,7 @@ if __name__ == '__main__':
     in_files = args.input
     out_files = get_output_filenames(args)
 
-    net = UNet(n_channels=3, n_classes=2)
+    net = UNet(n_channels=3, n_classes=4)
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     logging.info(f'Loading model {args.model}')

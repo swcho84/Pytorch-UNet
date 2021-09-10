@@ -23,12 +23,12 @@ dir_checkpoint = Path('./checkpoints/')
 
 def train_net(net,
               device,
-              epochs: int = 5,
-              batch_size: int = 1,
+              epochs: int = 400,
+              batch_size: int = 32,
               learning_rate: float = 0.001,
               val_percent: float = 0.1,
               save_checkpoint: bool = True,
-              img_scale: float = 0.5,
+              img_scale: float = 1.0,
               amp: bool = False):
     # 1. Create dataset
     dataset = BasicDataset(dir_img, dir_mask, img_scale)
@@ -108,7 +108,7 @@ def train_net(net,
                 pbar.set_postfix(**{'loss (batch)': loss.item()})
 
                 # Evaluation round
-                if global_step % (n_train // (10 * batch_size)) == 0:
+                if global_step % (n_train // (1 * batch_size)) == 0:
                     histograms = {}
                     for tag, value in net.named_parameters():
                         tag = tag.replace('/', '.')
@@ -140,12 +140,12 @@ def train_net(net,
 
 def get_args():
     parser = argparse.ArgumentParser(description='Train the UNet on images and target masks')
-    parser.add_argument('--epochs', '-e', metavar='E', type=int, default=5, help='Number of epochs')
-    parser.add_argument('--batch-size', '-b', dest='batch_size', metavar='B', type=int, default=1, help='Batch size')
-    parser.add_argument('--learning-rate', '-l', metavar='LR', type=float, default=0.00001,
+    parser.add_argument('--epochs', '-e', metavar='E', type=int, default=400, help='Number of epochs')
+    parser.add_argument('--batch-size', '-b', dest='batch_size', metavar='B', type=int, default=16, help='Batch size')
+    parser.add_argument('--learning-rate', '-l', metavar='LR', type=float, default=0.0005,
                         help='Learning rate', dest='lr')
     parser.add_argument('--load', '-f', type=str, default=False, help='Load model from a .pth file')
-    parser.add_argument('--scale', '-s', type=float, default=0.5, help='Downscaling factor of the images')
+    parser.add_argument('--scale', '-s', type=float, default=1.0, help='Downscaling factor of the images')
     parser.add_argument('--validation', '-v', dest='val', type=float, default=10.0,
                         help='Percent of the data that is used as validation (0-100)')
     parser.add_argument('--amp', action='store_true', default=False, help='Use mixed precision')
@@ -163,7 +163,7 @@ if __name__ == '__main__':
     # Change here to adapt to your data
     # n_channels=3 for RGB images
     # n_classes is the number of probabilities you want to get per pixel
-    net = UNet(n_channels=3, n_classes=2, bilinear=True)
+    net = UNet(n_channels=3, n_classes=4, bilinear=True)
 
     logging.info(f'Network:\n'
                  f'\t{net.n_channels} input channels\n'
