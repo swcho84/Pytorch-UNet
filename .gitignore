@@ -2,6 +2,7 @@
 data/
 wandb/
 wandb/run/
+wandb/run-*/
 __pycache__/
 checkpoints/
 *.pth
