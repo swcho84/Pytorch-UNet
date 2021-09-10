@@ -1,0 +1,26 @@
+{
+    "os": "Linux-5.4.0-81-generic-x86_64-with-glibc2.27",
+    "python": "3.9.6",
+    "heartbeatAt": "2021-09-10T05:15:38.996898",
+    "startedAt": "2021-09-10T05:15:38.040523",
+    "docker": null,
+    "gpu": "TITAN RTX",
+    "gpu_count": 2,
+    "cpu_count": 20,
+    "cuda": "10.2.89",
+    "args": [
+        "--amp"
+    ],
+    "state": "running",
+    "program": "/home/drswchodl/Pytorch-UNet/train.py",
+    "codePath": "train.py",
+    "git": {
+        "remote": "https://github.com/swcho84/Pytorch-UNet",
+        "commit": "6d2418c25b226c761d7d52597830a01ecf301992"
+    },
+    "email": "swcho84@gmail.com",
+    "root": "/home/drswchodl/Pytorch-UNet",
+    "host": "drswchoDLserver",
+    "username": "drswchodl",
+    "executable": "/home/drswchodl/anaconda3/envs/yolov5_py3/bin/python"
+}

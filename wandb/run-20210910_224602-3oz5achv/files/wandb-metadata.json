@@ -1,0 +1,26 @@
+{
+    "os": "Linux-5.4.0-81-generic-x86_64-with-glibc2.17",
+    "python": "3.8.10",
+    "heartbeatAt": "2021-09-10T13:46:03.163259",
+    "startedAt": "2021-09-10T13:46:02.181559",
+    "docker": null,
+    "gpu": "GeForce RTX 2070 Super with Max-Q Design",
+    "gpu_count": 1,
+    "cpu_count": 16,
+    "cuda": null,
+    "args": [
+        "--amp"
+    ],
+    "state": "running",
+    "program": "train.py",
+    "codePath": "train.py",
+    "git": {
+        "remote": "https://github.com/swcho84/Pytorch-UNet",
+        "commit": "6d2418c25b226c761d7d52597830a01ecf301992"
+    },
+    "email": "swcho84@gmail.com",
+    "root": "/home/drswchorndlaptop/Pytorch-UNet",
+    "host": "drswchorndlaptop-AORUS-15G-XB",
+    "username": "drswchorndlaptop",
+    "executable": "/home/drswchorndlaptop/anaconda3/envs/yolov5_py3/bin/python"
+}

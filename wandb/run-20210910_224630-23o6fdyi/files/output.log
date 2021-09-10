@@ -1,0 +1,30 @@
+INFO: Starting training:
+        Epochs:          200
+        Batch size:      16
+        Learning rate:   0.001
+        Training size:   2533
+        Validation size: 281
+        Checkpoints:     True
+        Device:          cuda
+        Images scaling:  0.5
+        Mixed Precision: True
+Epoch 1/200:   0%|                                                                                                                                                                | 0/2533 [00:00<?, ?img/s]/home/drswchorndlaptop/anaconda3/envs/yolov5_py3/lib/python3.8/site-packages/torch/nn/functional.py:718: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  /opt/conda/conda-bld/pytorch_1623448234945/work/c10/core/TensorImpl.h:1156.)
+  return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
+Epoch 1/200:   2%|██▌                                                                                                                                 | 48/2533 [00:01<01:26, 28.83img/s, loss (batch)=0.94]/opt/conda/conda-bld/pytorch_1623448234945/work/aten/src/THCUNN/SpatialClassNLLCriterion.cu:105: cunn_SpatialClassNLLCriterion_updateOutput_kernel: block: [5,0,0], thread: [660,0,0] Assertion `t >= 0 && t < n_classes` failed.
+/opt/conda/conda-bld/pytorch_1623448234945/work/aten/src/THCUNN/SpatialClassNLLCriterion.cu:105: cunn_SpatialClassNLLCriterion_updateOutput_kernel: block: [5,0,0], thread: [980,0,0] Assertion `t >= 0 && t < n_classes` failed.
+/opt/conda/conda-bld/pytorch_1623448234945/work/aten/src/THCUNN/SpatialClassNLLCriterion.cu:105: cunn_SpatialClassNLLCriterion_updateOutput_kernel: block: [6,0,0], thread: [137,0,0] Assertion `t >= 0 && t < n_classes` failed.
+Epoch 1/200:   2%|██▌                                                                                                                                 | 48/2533 [00:02<01:46, 23.28img/s, loss (batch)=0.94]
+Traceback (most recent call last):
+  File "train.py", line 179, in <module>
+    train_net(net=net,
+  File "train.py", line 91, in train_net
+    + dice_loss(F.softmax(masks_pred, dim=1).float(),
+  File "/home/drswchorndlaptop/Pytorch-UNet/utils/dice_score.py", line 40, in dice_loss
+    return 1 - fn(input, target, reduce_batch_first=True)
+  File "/home/drswchorndlaptop/Pytorch-UNet/utils/dice_score.py", line 31, in multiclass_dice_coeff
+    dice += dice_coeff(input[:, channel, ...], target[:, channel, ...], reduce_batch_first, epsilon)
+  File "/home/drswchorndlaptop/Pytorch-UNet/utils/dice_score.py", line 14, in dice_coeff
+    if sets_sum.item() == 0:
+RuntimeError: CUDA error: device-side assert triggered
+CUDA kernel errors might be asynchronously reported at some other API call,so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1.

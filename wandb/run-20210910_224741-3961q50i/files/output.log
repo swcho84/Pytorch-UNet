@@ -1,0 +1,230 @@
+INFO: Starting training:
+        Epochs:          200
+        Batch size:      16
+        Learning rate:   0.001
+        Training size:   2533
+        Validation size: 281
+        Checkpoints:     True
+        Device:          cuda
+        Images scaling:  0.5
+        Mixed Precision: True
+Epoch 1/200:   0%|                                                                                                                                                                | 0/2533 [00:00<?, ?img/s]/home/drswchorndlaptop/anaconda3/envs/yolov5_py3/lib/python3.8/site-packages/torch/nn/functional.py:718: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  /opt/conda/conda-bld/pytorch_1623448234945/work/c10/core/TensorImpl.h:1156.)
+  return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Epoch 1/200: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▋| 2528/2533 [01:15<00:00, 34.88img/s, loss (batch)=0.663][W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                  | 0/17 [00:00<?, ?batch/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+
+Epoch 1/200: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2533/2533 [01:20<00:00, 31.55img/s, loss (batch)=1.37]
+INFO: Checkpoint 1 saved!
+Epoch 2/200:   0%|                                                                                                                                                                | 0/2533 [00:00<?, ?img/s][W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Epoch 2/200:  99%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▉ | 2512/2533 [01:14<00:00, 33.15img/s, loss (batch)=0.622][W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                  | 0/17 [00:00<?, ?batch/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+
+Validation round:  53%|█████████████████████████████████████████████████████████████████████████████▊                                                                     | 9/17 [00:02<00:01,  4.55batch/s]
+Epoch 2/200: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2533/2533 [01:19<00:00, 31.72img/s, loss (batch)=1.61]
+INFO: Checkpoint 2 saved!
+Epoch 3/200:   0%|                                                                                                                                                                | 0/2533 [00:00<?, ?img/s][W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Epoch 3/200:  99%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████  | 2496/2533 [01:13<00:01, 34.40img/s, loss (batch)=0.629][W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                  | 0/17 [00:00<?, ?batch/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+
+Validation round:  47%|█████████████████████████████████████████████████████████████████████▏                                                                             | 8/17 [00:02<00:01,  4.55batch/s]
+Epoch 3/200: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2533/2533 [01:18<00:00, 32.17img/s, loss (batch)=0.823]
+INFO: Checkpoint 3 saved!
+Epoch 4/200:   0%|                                                                                                                                                                | 0/2533 [00:00<?, ?img/s][W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Epoch 4/200:  98%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▎  | 2480/2533 [01:13<00:01, 34.19img/s, loss (batch)=0.677][W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                  | 0/17 [00:00<?, ?batch/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+
+
+Epoch 4/200: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2533/2533 [01:19<00:00, 31.74img/s, loss (batch)=0.657]
+INFO: Checkpoint 4 saved!
+Epoch 5/200:   0%|                                                                                                                                                                | 0/2533 [00:00<?, ?img/s][W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
