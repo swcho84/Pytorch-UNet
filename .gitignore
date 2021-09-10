@@ -1,6 +1,7 @@
 *.pyc
 data/
-wandb/*.*
+wandb/
+wandb/run/
 __pycache__/
 checkpoints/
 *.pth
