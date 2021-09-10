@@ -3,6 +3,8 @@ data/
 wandb/
 wandb/run/
 wandb/run-*
+wandb
+wandb-debug.log
 __pycache__/
 checkpoints/
 *.pth
