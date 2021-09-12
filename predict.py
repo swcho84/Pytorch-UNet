@@ -93,6 +93,7 @@ if __name__ == '__main__':
     net.load_state_dict(torch.load(args.model, map_location=device))
 
     logging.info('Model loaded!')
+    torch.save(net, str('lastModel.pth'))
 
     for i, filename in enumerate(in_files):
         logging.info(f'\nPredicting image {filename} ...')

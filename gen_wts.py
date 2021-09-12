@@ -4,7 +4,6 @@ import torchvision
 import os
 import struct
 from torchsummary import summary
-import unet_class
 
 def main():
     print('cuda device count: ', torch.cuda.device_count())
