@@ -6,6 +6,8 @@
 
 ![input and output for a random image in the test dataset](https://i.imgur.com/GD8FcB7.png)
 
+---
+---
 ## Added Information: Debugging Note
 1. ground/no-ground 만 구분하기 위해 KariDB의 mask를 추출
 	- 추출 시 ground=1, no-ground=0으로 입력
@@ -34,7 +36,10 @@
 	- BGR로 읽어오는 opencv image를 RGB로 변경하고 255.0으로 normalization 수행
 	- inference를 위해 선언하는 CUDA관련 함수들을 초기화-사용-제거로 구분하여 배치하였음
 	- prob이 confidence 이상인 경우 255로 셋팅하는 부분 디버깅하고 확정하였음
-
+11. 완전히 수렴하기 이전의 pth를 활용하여 wts로 만들어야 함
+  - predict 하면서 pth를 class 포함해서 저장하도록 코드 수정하였음
+---
+---
 ## Original ReadMe Inrofmation
 Customized implementation of the [U-Net](https://arxiv.org/abs/1505.04597) in PyTorch for Kaggle's [Carvana Image Masking Challenge](https://www.kaggle.com/c/carvana-image-masking-challenge) from high definition images.
 
