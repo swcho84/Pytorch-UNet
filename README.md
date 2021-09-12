@@ -6,7 +6,36 @@
 
 ![input and output for a random image in the test dataset](https://i.imgur.com/GD8FcB7.png)
 
+## Added Information: Debugging Note
+1. ground/no-ground 만 구분하기 위해 KariDB의 mask를 추출
+	- 추출 시 ground=1, no-ground=0으로 입력
+	- 1-channel gray image로 만들기
+2. 추출하면서 3-channel 의 jpg 로 src, 1-channel gray image mask 만들었음
+3. 이 코드는 1개의 class를 구분하려면 n_classes=3이어야 함
+	- 그렇지 않으면 cuda연산 시 크기가 맞지 않는다는 에러 발생함
+	- model의 in/out을 맞춰줄 때 오류 발생함
+	- 기본적으로 2개의 class를 구분하고 있는 상태여서 그런 듯, 그렇지 않으면 어딘가에 n_classes=2를 더하고 있다고 판단됨
+4. epoc/batch_size 를 비교적 잘 맞춰줘야함, 그렇지 않으면 CUDA OOM 발생함
+5. scale=0.5, bilinear=True이어야 GPU 8GB에서도 실행됨, 그렇지 않으면 CUDA OOM 발생함
+6. train.py 를 수정한 다음 predict.py 도 수정하였음
+7. https://github.com/wang-xinyu/tensorrtx 의 unet 을 이용하여 tensorRT engine화하기로 하였음
+8. gen_wts.py를 통해 pth를 wts로 변환해야 함
+  - 기존의 checkpoint.pth 는 class 정보를 들고있지 않기 때문에 unet class를 별도로 불러와야 함
+	- 이렇게 되면 engine을 만들어낼 수 있지만 이걸로 inference가 되지 않음
+	- epoch이 모두 끝나고 나면 network 자체를 pth로 저장하도록 train.py 코드 변경하였음
+	- gen_wts.py 를 통해 wts파일을 생성하였음, 이때, load만으로도 network의 모든 구조를 load 해야 함
+9. https://github.com/wang-xinyu/tensorrtx 의 unet 은 1-channel output만 받아주는 코드였음
+  - 해당 부분에 3-channel output 가능하도록 만들었음
+	- 이렇게 해야 wts에서 정상적으로 engine 파일이 만들어짐
+	- 이때, 전체 구조를 다 들고 있는 상태의 wts여야 원하는 형태의 engine file이 생성됨
+10. https://github.com/wang-xinyu/tensorrtx 의 unet 에서 3-channel 중 맨 앞의 1개를 가져와야 함
+  - 정상적으로 가져오려면 output을 process해주는 process_cls_result를 수정해야함, 이 부분 수정하였음
+		- 특히, sigmoid 계산하는 부분이 이상해서 많이 수정하였음
+	- BGR로 읽어오는 opencv image를 RGB로 변경하고 255.0으로 normalization 수행
+	- inference를 위해 선언하는 CUDA관련 함수들을 초기화-사용-제거로 구분하여 배치하였음
+	- prob이 confidence 이상인 경우 255로 셋팅하는 부분 디버깅하고 확정하였음
 
+## Original ReadMe Inrofmation
 Customized implementation of the [U-Net](https://arxiv.org/abs/1505.04597) in PyTorch for Kaggle's [Carvana Image Masking Challenge](https://www.kaggle.com/c/carvana-image-masking-challenge) from high definition images.
 
 - [Quick start using Docker](#quick-start-using-docker)

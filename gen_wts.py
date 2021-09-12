@@ -9,11 +9,11 @@ import unet_class
 def main():
     print('cuda device count: ', torch.cuda.device_count())
     
-		# using checkpoint.pth
-		# net = unet_class.UNet(3, 2).to("cuda:0" if torch.cuda.is_available() else "cpu")
+		# using checkpoint.pth, cannot use the tensorrt inference
+		# net = unet_class.UNet(3, 3).to("cuda:0" if torch.cuda.is_available() else "cpu")
     # net.load_state_dict(torch.load('unet_weight_karidb.pth', map_location='cuda:0'))
     
-		# using last model.pth
+		# using last model.pth, for using tensorrt inference
     net = torch.load('lastModel.pth')
 
     net = net.to('cuda:0')
@@ -23,10 +23,9 @@ def main():
     tmp = torch.ones(1, 3, 480, 640).to('cuda:0')
     print('input: ', tmp)
     out = net(tmp)
-
     print('output:', out)
-
     summary(net, (3, 480, 640))
+
     #return
     f = open("lastModel.wts", 'w')
     f.write("{}\n".format(len(net.state_dict().keys())))
