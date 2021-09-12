@@ -2,9 +2,10 @@
 data/
 wandb/
 wandb/run/
-wandb/run-*
-wandb
-wandb-debug.log
+wandb/run-*/
+wandb/debug-internal.log
+wandb/debug.log
+wandb/latest-run
 __pycache__/
 checkpoints/
 *.pth
