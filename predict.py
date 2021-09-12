@@ -41,7 +41,8 @@ def predict_img(net,
     if net.n_classes == 1:
         return (full_mask > out_threshold).numpy()
     else:
-        return F.one_hot(full_mask.argmax(dim=0), net.n_classes).permute(2, 0, 1).numpy()
+        res = F.one_hot(full_mask.argmax(dim=0), net.n_classes).permute(2, 0, 1).numpy()
+        return res
 
 
 def get_args():

@@ -8,8 +8,14 @@ import unet_class
 
 def main():
     print('cuda device count: ', torch.cuda.device_count())
-    net = unet_class.UNet(3, 2).to("cuda:0" if torch.cuda.is_available() else "cpu")
-    net.load_state_dict(torch.load('unet_weight_karidb.pth', map_location='cuda:0'))
+    
+		# using checkpoint.pth
+		# net = unet_class.UNet(3, 2).to("cuda:0" if torch.cuda.is_available() else "cpu")
+    # net.load_state_dict(torch.load('unet_weight_karidb.pth', map_location='cuda:0'))
+    
+		# using last model.pth
+    net = torch.load('lastModel.pth')
+
     net = net.to('cuda:0')
     net = net.eval()
     print('model: ', net)
@@ -22,7 +28,7 @@ def main():
 
     summary(net, (3, 480, 640))
     #return
-    f = open("unet_weight_karidb.wts", 'w')
+    f = open("lastModel.wts", 'w')
     f.write("{}\n".format(len(net.state_dict().keys())))
     for k,v in net.state_dict().items():
         print('key: ', k)

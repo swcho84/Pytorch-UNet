@@ -23,7 +23,7 @@ dir_checkpoint = Path('./checkpoints/')
 
 def train_net(net,
               device,
-              epochs: int = 1,
+              epochs: int = 100,
               batch_size: int = 16,
               learning_rate: float = 0.001,
               val_percent: float = 0.1,
@@ -137,11 +137,15 @@ def train_net(net,
             Path(dir_checkpoint).mkdir(parents=True, exist_ok=True)
             torch.save(net.state_dict(), str(dir_checkpoint / 'checkpoint_epoch{}.pth'.format(epoch + 1)))
             logging.info(f'Checkpoint {epoch + 1} saved!')
+    
+		# last save for using tensorrt inference
+    torch.save(net, str(dir_checkpoint / 'lastModel.pth'))
+    logging.info(f'lastModel saved!')    						
 
 
 def get_args():
     parser = argparse.ArgumentParser(description='Train the UNet on images and target masks')
-    parser.add_argument('--epochs', '-e', metavar='E', type=int, default=1, help='Number of epochs')
+    parser.add_argument('--epochs', '-e', metavar='E', type=int, default=100, help='Number of epochs')
     parser.add_argument('--batch-size', '-b', dest='batch_size', metavar='B', type=int, default=16, help='Batch size')
     parser.add_argument('--learning-rate', '-l', metavar='LR', type=float, default=0.001,
                         help='Learning rate', dest='lr')
