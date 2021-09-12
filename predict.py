@@ -15,7 +15,7 @@ from utils.utils import plot_img_and_mask
 def predict_img(net,
                 full_img,
                 device,
-                scale_factor=1,
+                scale_factor=0.5,
                 out_threshold=0.25):
     net.eval()
     img = torch.from_numpy(BasicDataset.preprocess(full_img, scale_factor, is_mask=False))
@@ -53,7 +53,7 @@ def get_args():
     parser.add_argument('--viz', '-v', action='store_true',
                         help='Visualize the images as they are processed')
     parser.add_argument('--no-save', '-n', action='store_true', help='Do not save the output masks')
-    parser.add_argument('--mask-threshold', '-t', type=float, default=0.5,
+    parser.add_argument('--mask-threshold', '-t', type=float, default=0.25,
                         help='Minimum probability value to consider a mask pixel white')
     parser.add_argument('--scale', '-s', type=float, default=0.5,
                         help='Scale factor for the input images')
@@ -81,7 +81,8 @@ if __name__ == '__main__':
     in_files = args.input
     out_files = get_output_filenames(args)
 
-    net = UNet(n_channels=3, n_classes=4)
+		# for kariDB
+    net = UNet(n_channels=3, n_classes=3)
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     logging.info(f'Loading model {args.model}')

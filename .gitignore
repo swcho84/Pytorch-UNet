@@ -10,5 +10,7 @@ __pycache__/
 checkpoints/
 *.pth
 *.jpg
+*.wts
+*.pth
 venv/
 .idea/
